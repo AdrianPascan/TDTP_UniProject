@@ -1,9 +1,8 @@
 package tdtp.morningcoffee.steps.serenity;
 
-import tdtp.morningcoffee.pages.DictionaryPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.ScenarioSteps;
-import tdtp.morningcoffee.pages.ResultPage;
+import tdtp.morningcoffee.pages.MainPage;
+import tdtp.morningcoffee.pages.SignInPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -11,32 +10,65 @@ import static org.hamcrest.Matchers.hasItem;
 
 public class EndUserSteps {
 
-    DictionaryPage dictionaryPage;
-    ResultPage resultPage;
+    SignInPage signInPage;
+    MainPage mainPage;
+
+
+    // SIGN IN PAGE
 
     @Step
-    public void enters(String keyword) {
-        dictionaryPage.enter_keywords(keyword);
+    public void is_the_sign_in_page() {
+        signInPage.open();
+        signInPage.waitFor(signInPage.getLogoImage());
     }
 
     @Step
-    public void starts_search() {
-        dictionaryPage.lookup_terms();
+    public void enters_username(String username) {
+        signInPage.enter_username(username);
     }
 
     @Step
-    public void should_see_definition(String definition) {
-        assertThat(resultPage.getDefinitions(), hasItem(containsString(definition)));
+    public void enters_password(String password) {
+        signInPage.enter_password(password);
     }
 
     @Step
-    public void is_the_home_page() {
-        dictionaryPage.open();
+    public void initiates_sign_in() {
+        signInPage.initiate_sign_in();
     }
 
     @Step
-    public void looks_for(String term) {
-        enters(term);
-        starts_search();
+    public void signs_in(String username, String password) {
+        enters_username(username);
+        enters_password(password);
+        initiates_sign_in();
+    }
+
+    @Step
+    public void should_see_sign_in_page() {
+        assert (signInPage.is_logo_image_displayed());
+    }
+
+    @Step
+    public void should_see_username_sign_in_error() {
+        assertThat(signInPage.getErrorMessages(), hasItem(containsString("Username is a required field.")));
+    }
+
+    @Step
+    public void should_see_password_sign_in_error() {
+        assertThat(signInPage.getErrorMessages(), hasItem(containsString("Please enter a password.")));
+    }
+
+
+    // MAIN PAGE
+
+    @Step
+    public void is_the_main_page() {
+        mainPage.open();
+    }
+
+    @Step
+    public void should_see_main_page() {
+        assert (mainPage.is_user_div_displayed());
     }
 }

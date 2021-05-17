@@ -1,0 +1,8 @@
+username,password
+user,user
+user@,user@
+user@email,user@email
+user@email.,user@email.
+@email.com,@email.com
+@.com,@.com
+user@.com,user@.com

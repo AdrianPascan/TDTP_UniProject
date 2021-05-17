@@ -1,0 +1,4 @@
+Sign in
+In order to use the LightHouse app
+As a user
+I want to be able to sign into the app using an account credentials
