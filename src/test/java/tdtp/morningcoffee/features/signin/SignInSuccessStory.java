@@ -21,8 +21,7 @@ public class SignInSuccessStory {
         webdriver.manage().window().maximize();
 
         user.is_the_sign_in_page();
-        // TODO: add username + password
-        user.signs_in("username", "password");
+        user.signs_in("adrian.pascan@stud.ubbcluj.ro", "Aa#123456");
         user.should_see_main_page();
     }
 }
