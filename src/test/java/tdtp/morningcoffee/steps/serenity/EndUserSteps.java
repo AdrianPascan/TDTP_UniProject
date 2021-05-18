@@ -111,7 +111,7 @@ public class EndUserSteps {
 
     @Step
     public void should_see_error() {
-        assertThat(buildingsPage.getErrorMessages(), hasItem(containsString("Error adding building! Invalid request.")));
+        assertThat(buildingsPage.getErrorMessages(), hasItem(containsString("Error adding building!")));
     }
 
     @Step
