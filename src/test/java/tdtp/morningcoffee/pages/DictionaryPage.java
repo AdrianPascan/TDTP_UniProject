@@ -12,7 +12,7 @@ import net.thucydides.core.pages.PageObject;
 
 import java.util.List;
 
-@DefaultUrl("http://en.wiktionary.org/wiki/Wiktionary")
+@DefaultUrl("https://lighthouse-demo.evozon.com/login")
 public class DictionaryPage extends PageObject {
 
 //    @FindBy(name="search")

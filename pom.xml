@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <serenity.version>2.0.81</serenity.version>
+        <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
     <repositories>
@@ -32,11 +33,13 @@
         </snapshots>
         <id>central</id>
         <name>bintray-plugins</name>
-        <url>http://jcenter.bintray.com</url>
+        <url>https://jcenter.bintray.com</url>
       </pluginRepository>
     </pluginRepositories>
 
     <dependencies>
+
+        <dependency><groupId>javax.xml.bind</groupId><artifactId>jaxb-api</artifactId><version>2.3.0</version></dependency><dependency><groupId>com.sun.xml.bind</groupId><artifactId>jaxb-impl</artifactId><version>2.3.0</version></dependency><dependency><groupId>javax.activation</groupId><artifactId>activation</artifactId><version>1.1.1</version></dependency><dependency><groupId>com.sun.xml.bind</groupId><artifactId>jaxb-core</artifactId><version>2.3.0</version></dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
@@ -61,7 +64,27 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay-rest</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <restapi.baseurl>https://lighthouse-demoapi.evozon.com</restapi.baseurl>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <restapi.baseurl>https://lighthouse-demoapi.evozon.com</restapi.baseurl>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>
@@ -82,6 +105,9 @@
                         <include>**/When*.java</include>
                         <include>**/*Story.java</include>
                     </includes>
+                    <systemPropertyVariables>
+                        <restapi.baseurl>${restapi.baseurl}</restapi.baseurl>
+                    </systemPropertyVariables>
                     <argLine>-Xmx512m</argLine>
                 </configuration>
                 <executions>

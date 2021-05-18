@@ -22,14 +22,14 @@ public class SearchByKeywordStoryParametrized {
 
     String name, definition;
 
-    @Issue("#WIKI-1")
-    @Test
-    public void searching_by_keyword_should_display_the_corresponding_article() {
-        anna.is_the_home_page();
-        anna.looks_for(name);
-        anna.should_see_definition(definition);
-
-    }
+//    @Issue("#WIKI-1")
+//    @Test
+//    public void searching_by_keyword_should_display_the_corresponding_article() {
+//        anna.is_the_home_page();
+//        anna.looks_for(name);
+//        anna.should_see_definition(definition);
+//
+//    }
 
 //    @Test
 //    public void searching_by_keyword_banana_should_display_the_corresponding_article() {
