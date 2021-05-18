@@ -1,6 +1,7 @@
 package tdtp.morningcoffee.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
+import tdtp.morningcoffee.pages.BuildingsPage;
 import tdtp.morningcoffee.pages.MainPage;
 import tdtp.morningcoffee.pages.SignInPage;
 
@@ -12,6 +13,7 @@ public class EndUserSteps {
 
     SignInPage signInPage;
     MainPage mainPage;
+    BuildingsPage buildingsPage;
 
 
     // SIGN IN PAGE
@@ -70,5 +72,50 @@ public class EndUserSteps {
     @Step
     public void should_see_main_page() {
         assert (mainPage.is_user_div_displayed());
+    }
+
+    // BUILDINGS PAGE
+
+    @Step
+    public void is_the_buildings_page() {
+        buildingsPage.open();
+    }
+
+    @Step
+    public void initiate_add_building() {
+        buildingsPage.initiateAddBuilding();
+    }
+
+    @Step
+    public void enters_bulding_name(String name) {
+        buildingsPage.enter_name(name);
+    }
+
+    @Step
+    public void enters_safe_distance(String dist) {
+        buildingsPage.enter_distance(dist);
+    }
+
+    @Step
+    public void add_building() {
+        buildingsPage.save_building();
+    }
+
+    @Step
+    public void saves_building(String name, String dist) {
+        initiate_add_building();
+        enters_bulding_name(name);
+        enters_safe_distance(dist);
+        add_building();
+    }
+
+    @Step
+    public void should_see_error() {
+        assertThat(buildingsPage.getErrorMessages(), hasItem(containsString("Error adding building! Invalid request.")));
+    }
+
+    @Step
+    public void should_see_success() {
+        assertThat(buildingsPage.getErrorMessages(), hasItem(containsString("Building saved!")));
     }
 }

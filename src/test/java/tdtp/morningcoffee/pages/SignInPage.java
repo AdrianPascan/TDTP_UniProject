@@ -9,8 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO: add username + password
-@DefaultUrl("https://username:password@lighthouse-demo.evozon.com/login")
+@DefaultUrl("https://lhdemo:20LHdemo21!@lighthouse-demo.evozon.com/login")
 public class SignInPage extends PageObject {
     @FindBy(css = "img[src='/login-logo/login_logo.png']")
     private WebElementFacade logoImage;
