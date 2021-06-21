@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO: complete with user & password
+// TODO: username + password
 @DefaultUrl("https://user:password@lighthouse-demo.evozon.com/login")
 public class SignInPage extends PageObject {
     @FindBy(css = "img[src='/login-logo/login_logo.png']")
