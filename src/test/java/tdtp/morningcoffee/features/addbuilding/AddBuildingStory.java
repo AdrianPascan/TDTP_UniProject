@@ -49,7 +49,8 @@ public class AddBuildingStory {
         webdriver.manage().window().maximize();
 
         user.is_the_sign_in_page();
-        user.signs_in("marius.gabriel.teodorescu@stud.ubbcluj.ro", "Aa#123456");
+        // TODO: username + password
+        user.signs_in("", "");
         user.should_see_main_page();
 
         user.is_the_buildings_page();
